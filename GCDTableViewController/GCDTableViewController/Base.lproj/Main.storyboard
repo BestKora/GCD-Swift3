@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j2d-uL-0tf">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Image Table View Controller-->
+        <scene sceneID="fK3-nV-r6p">
+            <objects>
+                <tableViewController id="j2d-uL-0tf" customClass="ImageTableViewController" customModule="GCDTableViewController" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="290" sectionHeaderHeight="28" sectionFooterHeight="28" id="Io5-RN-jgF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageGCD" rowHeight="290" id="7By-Ji-Az8" customClass="ImageTableViewCell" customModule="GCDTableViewController" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="290"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7By-Ji-Az8" id="TRc-fV-jU3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="289"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Unh-iA-TeE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="281"/>
+                                        </imageView>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8Mg-KV-fTo">
+                                            <rect key="frame" x="169" y="122" width="37" height="37"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="Unh-iA-TeE" firstAttribute="bottom" secondItem="TRc-fV-jU3" secondAttribute="bottomMargin" id="29o-jJ-7lr"/>
+                                        <constraint firstItem="Unh-iA-TeE" firstAttribute="centerX" secondItem="8Mg-KV-fTo" secondAttribute="centerX" id="9w4-oX-eSW"/>
+                                        <constraint firstItem="Unh-iA-TeE" firstAttribute="leading" secondItem="TRc-fV-jU3" secondAttribute="leading" id="DBj-Qr-ReG"/>
+                                        <constraint firstItem="Unh-iA-TeE" firstAttribute="top" secondItem="TRc-fV-jU3" secondAttribute="top" id="Qfa-ia-6VW"/>
+                                        <constraint firstAttribute="trailing" secondItem="Unh-iA-TeE" secondAttribute="trailing" id="ZKT-Ap-0Mw"/>
+                                        <constraint firstItem="Unh-iA-TeE" firstAttribute="centerY" secondItem="8Mg-KV-fTo" secondAttribute="centerY" id="haC-tz-OPO"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="spinner" destination="8Mg-KV-fTo" id="8qU-jA-eXE"/>
+                                    <outlet property="tImage" destination="Unh-iA-TeE" id="mbs-Qm-PPx"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="j2d-uL-0tf" id="EMh-fJ-Y8z"/>
+                            <outlet property="delegate" destination="j2d-uL-0tf" id="ARI-sB-IRL"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2VZ-H3-54M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-58" y="93"/>
+        </scene>
+    </scenes>
+</document>
