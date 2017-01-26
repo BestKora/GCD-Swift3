@@ -163,46 +163,41 @@ sleep (1)
 //:
 //: Мы можем воспроизвести простейший случай race condition, если будем изменять переменную `value` асинхронно на private очереди, а показывать `value` на текущем потоке:
 print("--- Имитация race condition ---")
+
 var value = "😇"
-func changeValue(variant: Int, symbol:String) {
+func changeValue(variant: Int) {
     sleep(1)
-    value = value + symbol
-    print ("\(value) - \(variant)");
+    value = value + "🐔"; print ("\(value) - \(variant)");
 }
 //: Запускаем `changeValue()` АСИНХРОННО и показываем `value` на текущем потоке
 mySerialQueue.async {
-    changeValue(variant: 1, symbol: "🐔")
+    changeValue(variant: 1)
 }
 value
 //: Теперь переустановим `value`, а затем выполним `changeValue()` __СИНХРОННО__, блокируя текущий поток до тех пор, пока задание `changeValue` не закончится, убирая таким образом race condition:
 value = "🦊"
 mySerialQueue.sync {
-    changeValue(variant:2, symbol: "🐵")
+    changeValue(variant:2)
 }
 value
 sleep(3)
 
 //: Запускаем `changeValue()` СИНХРОННО и показываем `value` на текущем потоке
 print("--- Убираем race condition с помощью sync---")
-
 value = "😇"
 mySerialQueue.sync {
-    changeValue(variant: 1, symbol: "🐔")
+    changeValue(variant: 1)
 }
 value
 //: Теперь переустановим `value`, а затем выполним `changeValue()` __СИНХРОННО__, блокируя текущий поток до тех пор, пока задание `changeValue` не закончится, убирая таким образом race condition:
 
 value = "🦊"
 mySerialQueue.sync {
-    changeValue(variant:2, symbol: "🐵")
+    changeValue(variant:2)
 }
 value
-
 sleep(2)
-
-
 //: ## Playground и Приложение
-
 //: Замечание: Необходимо закомментировать предложение finishExecution чтобы посмотреть результат на main queue в отладочной области и включить Ассистента Редактора, если вы хотите увидеть UI
 //: #### Запускаем простейшее задание на main queue
 mainQueue.async {
